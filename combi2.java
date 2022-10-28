@@ -10,6 +10,7 @@ public class combi2 {
     public static void main(String[] args) {
         //String myStr = "2? + ?5 = 69";
         String myStr = "1? + 1? = 21";
+        //String myStr = "1? + 1? = 11"; //Решений нет
         //String myStr = "     ?      +    ?     =      12 ";
         System.out.println("Подобрать решение: " + myStr);
         myStr = myStr.trim().replaceAll("\\s+", ""); //Убираем все пробелы из строки
@@ -46,6 +47,7 @@ public class combi2 {
     }
     // подбор решения
     public static void findAnswer(char[] myArr1, ArrayList<Integer> arrayList){
+        int count = 0;
         List<List<Integer>> result2 = new ArrayList<List<Integer>>();
         result2 = fillArray(result, comb, start, end, k);
         int resSize = result2.size();
@@ -60,7 +62,11 @@ public class combi2 {
             if (summ == Integer.parseInt(item[2])) {
                 answer = item[0] + " + " + item[1] + " = " + item[2];
                 System.out.println(answer);
+                count++;
             }
+        }
+        if (count == 0) {
+            System.out.println("Решений нет.");
         }
         return;
     }
